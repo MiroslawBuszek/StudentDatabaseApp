@@ -8,7 +8,7 @@ public class Student {
     private String lastName;
     private int gradeYear;
     private String studentID;
-    private String courses;
+    private String courses = "";
     private int tuitionBalance = 0;
     private static int costOfCourse = 600;
     private static int id = 1000;
@@ -24,10 +24,8 @@ public class Student {
 
         System.out.println("1 - Freshman\n2 - Sophmore\n3 - Junior\n4 - Senior\nEnter student class level: ");
         this.gradeYear = in.nextInt();
+
         setStudentID();
-
-        System.out.println(firstName + " " + lastName + " " + gradeYear + " " + studentID);
-
     }
 
     // generate an id
@@ -40,20 +38,17 @@ public class Student {
     // enroll in course
     public void enroll() {
         do {
-            System.out.println("enter course to enroll (Q to quite): ");
+            System.out.println("Enter course to enroll (Q to quite): ");
             Scanner in = new Scanner(System.in);
             String course = in.nextLine();
             if (!course.equals("Q")) {
-                courses = courses + "\n" + course;
+                courses += "\n " + course;
                 tuitionBalance += costOfCourse;
             } else {
                 break;
             }
         } while (1 != 0);
-
-        System.out.println("ENROLLED IN: " + courses);
     }
-
 
     // view balance
     public void viewBalance() {
@@ -71,6 +66,12 @@ public class Student {
         viewBalance();
     }
 
-// show status
-
+    // show status
+    public String toString() {
+        return "Name:" + firstName + " " + lastName +
+                "\nGrade level: " + gradeYear +
+                "\nStudent ID: " + studentID +
+                "\nCourses enrolled: " + courses +
+                "\nBalance: $" + tuitionBalance;
+    }
 }
