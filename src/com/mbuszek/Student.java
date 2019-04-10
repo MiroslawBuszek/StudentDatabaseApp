@@ -47,18 +47,30 @@ public class Student {
                 courses = courses + "\n" + course;
                 tuitionBalance += costOfCourse;
             } else {
-                System.out.println("BREAK!");
                 break;
             }
-        } while (1 != 0) ;
+        } while (1 != 0);
 
         System.out.println("ENROLLED IN: " + courses);
-        System.out.println("TUITION BALANCE: " + tuitionBalance);
     }
-}
+
+
     // view balance
+    public void viewBalance() {
+        System.out.println("Your balance is: $" + tuitionBalance);
+    }
 
     // pay tuition
+    public void payTuition() {
+        viewBalance();
+        System.out.println("Enter your payment: $");
+        Scanner in = new Scanner(System.in);
+        int payment = in.nextInt();
+        tuitionBalance -= payment;
+        System.out.println("Thank you for payment of $" + payment);
+        viewBalance();
+    }
 
-    // show status
+// show status
 
+}
